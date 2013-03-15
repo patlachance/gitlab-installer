@@ -201,6 +201,7 @@ cd /var/www && git clone -b $GL_INSTALL_BRANCH https://github.com/gitlabhq/gitla
 
 ### To Remove
 fi
+rvm use $RUBY_VERSION
 ### To Remove
 
 # Install GitLab
