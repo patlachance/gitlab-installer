@@ -102,6 +102,10 @@ sudo \
 mysql-devel \
 postgresql-devel
 
+# libicu not in EPEL anymore so getting package from rpmfind
+rpm -ivh ftp://fr2.rpmfind.net/linux/centos/6.3/os/x86_64/Packages/libicu-4.2.1-9.1.el6_2.x86_64.rpm \
+         ftp://fr2.rpmfind.net/linux/centos/6.3/os/x86_64/Packages/libicu-devel-4.2.1-9.1.el6_2.x86_64.rpm
+
 
 echo "### Install and start postfix"
 
