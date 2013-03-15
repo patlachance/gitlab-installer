@@ -105,11 +105,12 @@ postgresql-devel
 RHVER=$(cat /etc/redhat-release | perl -pe 's/[^\d\.]//g')
 RHVERMIN=$(echo $RHVER | cut -d. -f2)
 if [ $RHVERMIN -gt 2 ]; then
+  echo "### RHEL $RHVER found => need to install libicu from rpmfind.net"
   RHARCH=$(uname -m)
   RPMFINDURL="ftp://fr2.rpmfind.net/linux/centos/$RHVER/os/$RHARCH/Packages/"
   ICUPKG=$(curl --disable-epsv -s $RPMFINDURL -l | egrep "libicu.*$RHARCH")
   for p in $ICUPKG; do
-    echo rpm -Uvh $RPMFINDURL$p
+    rpm -Uvh $RPMFINDURL$p
   done
 fi
 
