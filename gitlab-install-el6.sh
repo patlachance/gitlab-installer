@@ -9,6 +9,10 @@
 # Exit on error
 set -e
 
+### To Remove
+if [ 1 = 2 ] ; then 
+### To Remove
+
 # Define the database type (sqlite or mysql (default))
 export GL_DATABASE_TYPE=mysql
 
@@ -103,9 +107,8 @@ mysql-devel \
 postgresql-devel
 
 # libicu not in EPEL anymore so getting package from rpmfind
-rpm -ivh ftp://fr2.rpmfind.net/linux/centos/6.3/os/x86_64/Packages/libicu-4.2.1-9.1.el6_2.x86_64.rpm \
+rpm -Uvh ftp://fr2.rpmfind.net/linux/centos/6.3/os/x86_64/Packages/libicu-4.2.1-9.1.el6_2.x86_64.rpm \
          ftp://fr2.rpmfind.net/linux/centos/6.3/os/x86_64/Packages/libicu-devel-4.2.1-9.1.el6_2.x86_64.rpm
-
 
 echo "### Install and start postfix"
 
@@ -195,6 +198,10 @@ echo "### Install GitLab"
 
 # Download code
 cd /var/www && git clone -b $GL_INSTALL_BRANCH https://github.com/gitlabhq/gitlabhq.git
+
+### To Remove
+fi
+### To Remove
 
 # Install GitLab
 cd $GL_INSTALL_ROOT && bundle install
