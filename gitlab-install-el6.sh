@@ -103,12 +103,15 @@ postgresql-devel
 
 # libicu not in EPEL anymore so getting package from rpmfind
 RHVER=$(cat /etc/redhat-release | perl -pe 's/[^\d\.]//g')
-RHARCH=$(uname -m)
-RPMFINDURL="ftp://fr2.rpmfind.net/linux/centos/$RHVER/os/$RHARCH/Packages/"
-PKGLIST=$(curl --disable-epsv -s $RPMFINDURL -l | egrep "libicu.*$RHARCH")
-for p in $ICUPKG; do
-  rpm -Uvh $RPMFINDURL$p
-done
+RHVERMIN=$(echo $RHVER | cut -d. -f2)
+if [ $RHVERMIN -gt 2 ]; then
+  RHARCH=$(uname -m)
+  RPMFINDURL="ftp://fr2.rpmfind.net/linux/centos/$RHVER/os/$RHARCH/Packages/"
+  ICUPKG=$(curl --disable-epsv -s $RPMFINDURL -l | egrep "libicu.*$RHARCH")
+  for p in $ICUPKG; do
+    echo rpm -Uvh $RPMFINDURL$p
+  done
+fi
 
 echo "### Install and start postfix"
 
