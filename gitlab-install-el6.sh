@@ -9,10 +9,6 @@
 # Exit on error
 set -e
 
-### To Remove
-if [ 1 = 2 ] ; then 
-### To Remove
-
 # Define the database type (sqlite or mysql (default))
 export GL_DATABASE_TYPE=mysql
 
@@ -34,6 +30,9 @@ export RAILS_ENV=production
 # Define MySQL root password (we need it if we want mysql)
 MYSQL_ROOT_PW=$(cat /dev/urandom | tr -cd [:alnum:] | head -c ${1:-16})
 
+### To Remove
+if [ 1 = 2 ] ; then 
+### To Remove
 
 die()
 {
