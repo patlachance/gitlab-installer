@@ -30,10 +30,6 @@ export RAILS_ENV=production
 # Define MySQL root password (we need it if we want mysql)
 MYSQL_ROOT_PW=$(cat /dev/urandom | tr -cd [:alnum:] | head -c ${1:-16})
 
-### To Remove
-if [ 1 = 2 ] ; then 
-### To Remove
-
 die()
 {
   # $1 - the exit code
@@ -198,17 +194,6 @@ echo "### Install GitLab"
 # Download code
 cd /var/www && git clone -b $GL_INSTALL_BRANCH https://github.com/gitlabhq/gitlabhq.git
 
-### To Remove
-fi
-# add qmake to path
-case $(uname -m) in
-  x86_64) export PATH=$PATH:/usr/lib64/qt4/bin/ ;;
-  *) export PATH=$PATH:/usr/lib/qt4/bin/ ;;
-esac
-source /etc/profile.d/rvm.sh
-rvm use $RUBY_VERSION
-cd /var/www
-### To Remove
 
 # Install GitLab
 cd $GL_INSTALL_ROOT && bundle install
