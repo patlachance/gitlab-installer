@@ -200,6 +200,11 @@ cd /var/www && git clone -b $GL_INSTALL_BRANCH https://github.com/gitlabhq/gitla
 
 ### To Remove
 fi
+# add qmake to path
+case $(uname -m) in
+  x86_64) export PATH=$PATH:/usr/lib64/qt4/bin/ ;;
+  *) export PATH=$PATH:/usr/lib/qt4/bin/ ;;
+esac
 source /etc/profile.d/rvm.sh
 rvm use $RUBY_VERSION
 cd /var/www
